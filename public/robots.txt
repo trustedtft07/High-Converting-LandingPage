@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sheetflow.vercel.app/sitemap-index.xml

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#faf9f6"/>
+  <rect x="48" y="48" width="1104" height="534" rx="12" stroke="#e4e4e7" stroke-width="2"/>
+  <text x="88" y="140" fill="#71717a" font-family="system-ui, sans-serif" font-size="20" font-weight="700" letter-spacing="1">SHEETFLOW</text>
+  <text x="88" y="240" fill="#09090b" font-family="system-ui, sans-serif" font-size="52" font-weight="700" letter-spacing="-1">Landing Page Cepat &amp;</text>
+  <text x="88" y="310" fill="#18181b" font-family="system-ui, sans-serif" font-size="52" font-weight="700" letter-spacing="-1">Terintegrasi Google Sheets</text>
+  <text x="88" y="380" fill="#71717a" font-family="system-ui, sans-serif" font-size="22">Solusi pencatatan prospek tanpa biaya langganan aplikasi form bulanan.</text>
+  <line x1="88" y1="460" x2="1112" y2="460" stroke="#e4e4e7" stroke-width="1.5"/>
+  <text x="88" y="515" fill="#71717a" font-family="system-ui, sans-serif" font-size="16">SHEETFLOW.VERCEL.APP</text>
+</svg>
