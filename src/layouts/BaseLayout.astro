@@ -1,0 +1,80 @@
+---
+import { SEO } from 'astro-seo';
+import { siteConfig } from '../config/site';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title = siteConfig.title,
+  description = siteConfig.description,
+  ogImage = '/og-cover.svg'
+} = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, siteConfig.url).href;
+const ogImageUrl = new URL(ogImage, siteConfig.url).href;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "BusinessEvent",
+  "name": siteConfig.name,
+  "description": siteConfig.description,
+  "url": siteConfig.url,
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+  "organizer": {
+    "@type": "Person",
+    "name": siteConfig.author,
+    "url": "https://ahmadandhikaharirie.my.id"
+  },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "IDR",
+    "price": "1490000",
+    "availability": "https://schema.org/InStock",
+    "url": canonicalUrl
+  }
+};
+---
+
+<!doctype html>
+<html lang="id" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content={siteConfig.themeColor} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalUrl} />
+    <SEO
+      title={title}
+      description={description}
+      canonical={canonicalUrl}
+      openGraph={{
+        basic: {
+          title: title,
+          type: 'website',
+          image: ogImageUrl,
+          url: canonicalUrl
+        },
+        optional: {
+          siteName: siteConfig.name,
+          description: description
+        }
+      }}
+      twitter={{
+        card: 'summary_large_image',
+        title: title,
+        description: description,
+        image: ogImageUrl
+      }}
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </head>
+  <body class="bg-zinc-950 text-zinc-100 min-h-screen flex flex-col font-sans selection:bg-emerald-600 selection:text-white">
+    <slot />
+  </body>
+</html>

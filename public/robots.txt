@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lp.ahmadandhikaharirie.my.id/sitemap-index.xml
