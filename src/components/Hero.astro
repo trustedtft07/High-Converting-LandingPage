@@ -1,0 +1,116 @@
+---
+import { ArrowRight, CheckCircle2, ShieldCheck, Zap } from 'lucide-astro';
+---
+
+<section class="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden border-b border-zinc-800/80">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-zinc-900 border border-zinc-700/80 text-zinc-300 text-xs font-mono tracking-wide">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          <span>EXECUTIVE BATCH 2026 · TERBATAS 25 SLOT</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.12]">
+          Akselerasi Pipeline Leads B2B & Validasi Penawaran <span class="text-emerald-400">Tanpa Beban Server</span>
+        </h1>
+
+        <p class="text-base sm:text-lg text-zinc-400 leading-relaxed max-w-2xl">
+          Framework terstruktur untuk founder startup dan pelaku bisnis lokal membangun mesin akuisisi pelanggan otomatis: konversi tinggi, loading sub-detik di layar mobile, dan integrasi instan ke Google Sheets.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+          <a
+            href="#lead-form"
+            class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-sm sm:text-base transition-colors shadow-lg shadow-emerald-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
+            aria-label="Amankan slot workshop sekarang"
+          >
+            <span>Amankan Slot Workshop</span>
+            <ArrowRight class="w-4 h-4" />
+          </a>
+          <a
+            href="#solusi"
+            class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-zinc-200 border border-zinc-700/80 font-medium text-sm sm:text-base transition-colors"
+          >
+            <span>Pelajari Metodologi</span>
+          </a>
+        </div>
+
+        <div class="pt-6 border-t border-zinc-800/80 grid grid-cols-3 gap-4 sm:gap-6">
+          <div>
+            <div class="text-2xl sm:text-3xl font-bold font-mono text-white tabular-nums">99+</div>
+            <div class="text-xs sm:text-sm text-zinc-400 font-medium">PageSpeed Mobile</div>
+          </div>
+          <div>
+            <div class="text-2xl sm:text-3xl font-bold font-mono text-emerald-400 tabular-nums">&lt;0.8s</div>
+            <div class="text-xs sm:text-sm text-zinc-400 font-medium">First Contentful Paint</div>
+          </div>
+          <div>
+            <div class="text-2xl sm:text-3xl font-bold font-mono text-white tabular-nums">0 IDR</div>
+            <div class="text-xs sm:text-sm text-zinc-400 font-medium">Biaya Database Bulanan</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5">
+        <div class="rounded-xl border border-zinc-700/80 bg-zinc-900/90 shadow-2xl p-4 sm:p-5 font-mono text-xs space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-zinc-800">
+            <div class="flex items-center gap-1.5">
+              <div class="w-2.5 h-2.5 rounded-full bg-zinc-700"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-zinc-700"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-zinc-700"></div>
+              <span class="ml-2 text-zinc-400 text-[11px]">telemetry.lead-pipeline.sh</span>
+            </div>
+            <span class="inline-flex items-center gap-1 text-[11px] text-emerald-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              READY
+            </span>
+          </div>
+
+          <div class="space-y-2.5">
+            <div class="p-3 rounded-lg bg-zinc-950/80 border border-zinc-800 flex items-start gap-3">
+              <Zap class="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
+              <div class="space-y-1">
+                <div class="text-zinc-200 font-semibold text-xs">Form Dispatch Event</div>
+                <div class="text-zinc-400 text-[11px]">Payload sanitized · Honeypot clean</div>
+              </div>
+            </div>
+
+            <div class="p-3 rounded-lg bg-zinc-950/80 border border-zinc-800 flex items-start gap-3">
+              <ShieldCheck class="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
+              <div class="space-y-1">
+                <div class="text-zinc-200 font-semibold text-xs">Serverless API Proxy</div>
+                <div class="text-zinc-400 text-[11px]">RateLimit verification · 200 OK</div>
+              </div>
+            </div>
+
+            <div class="p-3 rounded-lg bg-zinc-950/80 border border-zinc-800 flex items-start gap-3">
+              <CheckCircle2 class="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
+              <div class="space-y-1">
+                <div class="text-zinc-200 font-semibold text-xs">Google Sheets Webhook Sync</div>
+                <div class="text-zinc-400 text-[11px]">Row appended with UTC timestamp</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-3.5 rounded-lg bg-zinc-950/60 border border-zinc-800/80 space-y-2">
+            <div class="flex justify-between text-zinc-400 text-[11px]">
+              <span>Conversion Benchmark</span>
+              <span class="text-emerald-400 font-bold">14.8%</span>
+            </div>
+            <div class="w-full bg-zinc-800 rounded-full h-1.5 overflow-hidden">
+              <div class="bg-emerald-500 h-1.5 rounded-full w-[78%]"></div>
+            </div>
+            <div class="flex justify-between text-[10px] text-zinc-400 pt-1">
+              <span>Industry Avg: 3.2%</span>
+              <span>Elevate Engine: +362%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,102 @@
+---
+import { FileSpreadsheet, MessageSquare, ShieldCheck, Zap } from 'lucide-astro';
+---
+
+<section id="keunggulan" class="py-20 border-b border-zinc-800/80 bg-zinc-950">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-mono text-emerald-400">
+        <span>ARCHITECTURAL ADVANTAGES</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+        Infrastruktur Rekayasa Konversi Tinggi
+      </h2>
+      <p class="text-zinc-400 text-base sm:text-lg leading-relaxed">
+        Dirancang secara spesifik dengan metodologi Jamstack modern untuk memaksimalkan ROI kampanye pemasaran bisnis Anda.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="md:col-span-2 p-6 sm:p-8 rounded-xl bg-zinc-900/40 border border-zinc-800/80 hover:border-zinc-700/80 transition-colors space-y-6 flex flex-col justify-between">
+        <div class="space-y-4">
+          <div class="w-10 h-10 rounded-lg bg-zinc-800/80 border border-zinc-700/60 flex items-center justify-center text-emerald-400">
+            <Zap class="w-5 h-5" />
+          </div>
+          <h3 class="text-xl font-bold text-white">0kB JavaScript Core Hydration</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed max-w-xl">
+            Seluruh konten statis dirender sebagai HTML murni oleh Astro. Mesin browser tidak perlu mengunduh atau mengeksekusi library raksasa, mengunci skor PageSpeed di 98–100 pada jaringan seluler 4G.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-lg bg-zinc-950/80 border border-zinc-800 font-mono text-xs space-y-2">
+          <div class="flex justify-between text-zinc-400 text-[11px]">
+            <span>Payload Transfer Benchmark</span>
+            <span class="text-emerald-400 font-bold">18.4 kB Total</span>
+          </div>
+          <div class="w-full bg-zinc-800 rounded-full h-2 overflow-hidden flex">
+            <div class="bg-emerald-500 h-2 w-[70%]" title="HTML"></div>
+            <div class="bg-teal-400 h-2 w-[20%]" title="CSS"></div>
+            <div class="bg-emerald-300 h-2 w-[10%]" title="JS"></div>
+          </div>
+          <div class="flex gap-4 text-[11px] text-zinc-400 pt-1">
+            <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> HTML (12.8 kB)</span>
+            <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-teal-400"></span> CSS (3.8 kB)</span>
+            <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-300"></span> Form JS (1.8 kB)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-6 sm:p-8 rounded-xl bg-zinc-900/40 border border-zinc-800/80 hover:border-zinc-700/80 transition-colors space-y-4 flex flex-col justify-between">
+        <div class="space-y-4">
+          <div class="w-10 h-10 rounded-lg bg-zinc-800/80 border border-zinc-700/60 flex items-center justify-center text-emerald-400">
+            <ShieldCheck class="w-5 h-5" />
+          </div>
+          <h3 class="text-xl font-bold text-white">Anti-Bot & Sanitizer</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed">
+            Honeypot trap mendeteksi bot pengisi otomatis. Karakter formula injection dibersihkan secara ketat sebelum data menyentuh Google Sheets.
+          </p>
+        </div>
+        <div class="p-3 rounded-lg bg-zinc-950/60 border border-zinc-800 text-xs font-mono text-zinc-400 space-y-1">
+          <div class="text-emerald-400 flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            Honeypot Filter Active
+          </div>
+          <div>Formula Injection Cleaned</div>
+        </div>
+      </div>
+
+      <div class="p-6 sm:p-8 rounded-xl bg-zinc-900/40 border border-zinc-800/80 hover:border-zinc-700/80 transition-colors space-y-4 flex flex-col justify-between">
+        <div class="space-y-4">
+          <div class="w-10 h-10 rounded-lg bg-zinc-800/80 border border-zinc-700/60 flex items-center justify-center text-emerald-400">
+            <FileSpreadsheet class="w-5 h-5" />
+          </div>
+          <h3 class="text-xl font-bold text-white">Google Sheets Pipeline</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed">
+            Database gratis tanpa limit kuota. Data pendaftaran tercatat rapi per baris dengan timestamp dan parameter attribution UTM kampanye.
+          </p>
+        </div>
+        <div class="p-3 rounded-lg bg-zinc-950/60 border border-zinc-800 text-xs font-mono text-zinc-400 space-y-1">
+          <div class="text-emerald-400">Sync: 120ms Latency</div>
+          <div>Storage: Google Cloud Drive</div>
+        </div>
+      </div>
+
+      <div class="md:col-span-2 p-6 sm:p-8 rounded-xl bg-zinc-900/40 border border-zinc-800/80 hover:border-zinc-700/80 transition-colors space-y-6 flex flex-col justify-between">
+        <div class="space-y-4">
+          <div class="w-10 h-10 rounded-lg bg-zinc-800/80 border border-zinc-700/60 flex items-center justify-center text-emerald-400">
+            <MessageSquare class="w-5 h-5" />
+          </div>
+          <h3 class="text-xl font-bold text-white">Direct WhatsApp Pre-filled Channel</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed max-w-xl">
+            Mengakomodasi preferensi audiens Indonesia melalui tombol direct WhatsApp berpesan dinamis. Tim penjualan Anda dapat langsung merespons prospek hangat saat minat beli berada di titik puncak.
+          </p>
+        </div>
+
+        <div class="p-3.5 rounded-lg bg-zinc-950/80 border border-zinc-800 flex items-center justify-between text-xs font-mono">
+          <span class="text-zinc-400">wa.me/628xxx?text=Halo%20ElevateGrowth...</span>
+          <span class="text-emerald-400 font-semibold">1-Click Engage</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,37 @@
+---
+import { ArrowRight } from 'lucide-astro';
+---
+
+<header class="sticky top-0 z-50 w-full border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 rounded-md">
+      <div class="w-8 h-8 rounded-lg bg-zinc-900 border border-zinc-700/80 flex items-center justify-center text-emerald-400 group-hover:border-emerald-500/50 transition-colors">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+          <polyline points="16 7 22 7 22 13"></polyline>
+        </svg>
+      </div>
+      <span class="font-bold tracking-tight text-white text-base">
+        Elevate<span class="text-emerald-400">Growth</span>
+      </span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
+      <a href="#solusi" class="hover:text-white transition-colors">Solusi</a>
+      <a href="#keunggulan" class="hover:text-white transition-colors">Keunggulan</a>
+      <a href="#harga" class="hover:text-white transition-colors">Paket Investasi</a>
+      <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a
+        href="#lead-form"
+        class="inline-flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg bg-emerald-500 text-zinc-950 hover:bg-emerald-400 transition-colors shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
+        aria-label="Daftar ke formulir konsultasi ElevateGrowth"
+      >
+        <span>Daftar Sekarang</span>
+        <ArrowRight class="w-4 h-4" />
+      </a>
+    </div>
+  </div>
+</header>
