@@ -1,0 +1,396 @@
+---
+import { ArrowRight, CheckCircle2, ExternalLink, Lock, MessageSquare, ShieldCheck } from 'lucide-astro';
+import { siteConfig } from '../config/site';
+import { PACKAGE_LABELS, VALID_PACKAGES } from '../utils/validation';
+
+const whatsappNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER || siteConfig.whatsappNumber;
+const sandboxSheetUrl = import.meta.env.PUBLIC_SANDBOX_SHEET_URL || siteConfig.defaultSandboxSheetUrl;
+---
+
+<section id="lead-form" class="py-20 bg-zinc-950">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <div class="lg:col-span-5 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-mono text-emerald-400">
+          <span>PRIORITY REGISTRATION</span>
+        </div>
+
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+          Amankan Slot Workshop &amp; Jadwalkan Sesi Anda
+        </h2>
+
+        <p class="text-zinc-400 text-base leading-relaxed">
+          Isi formulir kualifikasi di samping untuk mengamankan kuota batch terdekat. Data Anda diproses melalui jalur terenkripsi dan langsung tercatat ke dalam sistem penjadwalan tim kami.
+        </p>
+
+        <div class="space-y-4 pt-2">
+          <div class="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800/80 flex items-start gap-3.5">
+            <ShieldCheck class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+            <div class="space-y-1">
+              <div class="text-sm font-semibold text-white">Proteksi Privasi &amp; Data Masking</div>
+              <p class="text-xs text-zinc-400 leading-relaxed">
+                Pada mode demonstrasi publik, sebagian email dan nomor telepon disensor otomatis sebelum ditampilkan di Google Sheets agar privasi Anda tetap terlindungi.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800/80 flex items-start justify-between gap-4">
+            <div class="space-y-1">
+              <div class="text-sm font-semibold text-white">Transparansi Pipeline Real-Time</div>
+              <p class="text-xs text-zinc-400 leading-relaxed">
+                Uji kirim formulir ini dan pantau baris data masuk secara instan pada spreadsheet sandbox publik.
+              </p>
+            </div>
+            <a
+              href={sandboxSheetUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Buka Google Sheet Sandbox Publik"
+              class="shrink-0 inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-zinc-950 border border-zinc-700 text-xs font-mono text-emerald-400 hover:border-emerald-500/60 transition-colors"
+            >
+              <span>Live Sheet</span>
+              <ExternalLink class="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7">
+        <div
+          id="lead-form-wrapper"
+          data-whatsapp={whatsappNumber}
+          data-sheet-url={sandboxSheetUrl}
+          class="p-6 sm:p-8 rounded-2xl bg-zinc-900/60 border border-zinc-800 shadow-2xl"
+        >
+          <form id="elevate-lead-form" class="space-y-5" novalidate>
+            <div class="hidden" aria-hidden="true">
+              <label for="company_fax">Company Fax</label>
+              <input
+                type="text"
+                id="company_fax"
+                name="company_fax"
+                tabindex="-1"
+                autocomplete="off"
+              />
+            </div>
+
+            <input type="hidden" id="utm_source" name="utmSource" value="direct" />
+            <input type="hidden" id="utm_medium" name="utmMedium" value="none" />
+            <input type="hidden" id="utm_campaign" name="utmCampaign" value="organic" />
+            <input type="hidden" id="referrer_url" name="referrer" value="" />
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div class="space-y-2">
+                <label for="fullName" class="block text-xs font-semibold uppercase tracking-wider text-zinc-300">
+                  Nama Lengkap <span class="text-emerald-400">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="fullName"
+                  name="fullName"
+                  required
+                  maxlength="80"
+                  placeholder="Budi Santoso"
+                  autocomplete="name"
+                  class="w-full px-4 py-3 rounded-lg bg-zinc-950 border border-zinc-800 text-sm text-white placeholder:text-zinc-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors"
+                />
+              </div>
+
+              <div class="space-y-2">
+                <label for="phone" class="block text-xs font-semibold uppercase tracking-wider text-zinc-300">
+                  Nomor WhatsApp <span class="text-emerald-400">*</span>
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  required
+                  maxlength="16"
+                  placeholder="081234567890"
+                  autocomplete="tel"
+                  class="w-full px-4 py-3 rounded-lg bg-zinc-950 border border-zinc-800 text-sm text-white placeholder:text-zinc-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors font-mono"
+                />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div class="space-y-2">
+                <label for="email" class="block text-xs font-semibold uppercase tracking-wider text-zinc-300">
+                  Email Bisnis / Aktif <span class="text-emerald-400">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  maxlength="120"
+                  placeholder="budi@perusahaan.co.id"
+                  autocomplete="email"
+                  class="w-full px-4 py-3 rounded-lg bg-zinc-950 border border-zinc-800 text-sm text-white placeholder:text-zinc-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors"
+                />
+              </div>
+
+              <div class="space-y-2">
+                <label for="packageId" class="block text-xs font-semibold uppercase tracking-wider text-zinc-300">
+                  Pilihan Paket <span class="text-emerald-400">*</span>
+                </label>
+                <select
+                  id="packageId"
+                  name="packageId"
+                  required
+                  class="w-full px-4 py-3 rounded-lg bg-zinc-950 border border-zinc-800 text-sm text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors"
+                >
+                  {VALID_PACKAGES.map((pkgId) => (
+                    <option value={pkgId} selected={pkgId === 'growth-bundle'}>
+                      {PACKAGE_LABELS[pkgId]}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              <label for="notes" class="block text-xs font-semibold uppercase tracking-wider text-zinc-300">
+                Target Konversi / Catatan Kebutuhan (Opsional)
+              </label>
+              <textarea
+                id="notes"
+                name="notes"
+                rows="3"
+                maxlength="500"
+                placeholder="Ceritakan singkat industri bisnis Anda atau kendala akuisisi prospek saat ini..."
+                class="w-full px-4 py-3 rounded-lg bg-zinc-950 border border-zinc-800 text-sm text-white placeholder:text-zinc-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors resize-none"
+              ></textarea>
+            </div>
+
+            <div
+              id="form-error-alert"
+              role="alert"
+              class="hidden p-3.5 rounded-lg bg-red-950/60 border border-red-800/80 text-xs text-red-200 font-medium"
+            ></div>
+
+            <button
+              type="submit"
+              id="submit-lead-btn"
+              class="w-full inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-lg bg-emerald-500 hover:bg-emerald-400 disabled:opacity-60 disabled:cursor-not-allowed text-zinc-950 font-bold text-sm sm:text-base transition-colors cursor-pointer"
+            >
+              <span id="submit-btn-label">Kirim Pendaftaran &amp; Amankan Slot</span>
+              <ArrowRight id="submit-btn-icon" class="w-4 h-4" />
+            </button>
+
+            <div class="flex items-center justify-center gap-2 text-[11px] text-zinc-400 pt-1">
+              <Lock class="w-3.5 h-3.5 text-emerald-400" />
+              <span>Serverless Proxy Protected · Anti-Spam &amp; Zero Third-Party Data Resale</span>
+            </div>
+          </form>
+
+          <div id="form-success-panel" class="hidden space-y-6 py-4">
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 rounded-xl bg-emerald-500/15 border border-emerald-500/40 flex items-center justify-center text-emerald-400 shrink-0">
+                <CheckCircle2 class="w-6 h-6" />
+              </div>
+              <div class="space-y-1.5">
+                <h3 class="text-xl font-bold text-white">Pendaftaran Berhasil Tercatat</h3>
+                <p id="success-summary-text" class="text-sm text-zinc-300 leading-relaxed"></p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-zinc-950 border border-zinc-800 font-mono text-xs text-zinc-300 space-y-1.5">
+              <div class="flex justify-between">
+                <span class="text-zinc-400">Status Pipeline:</span>
+                <span id="pipeline-mode-badge" class="text-emerald-400 font-semibold">TERKIRIM</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-zinc-400">Kampanye UTM:</span>
+                <span id="captured-utm-display" class="text-zinc-200">direct / organic</span>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              <a
+                id="success-wa-link"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-sm transition-colors"
+              >
+                <MessageSquare class="w-4 h-4" />
+                <span>Konfirmasi via WhatsApp</span>
+              </a>
+
+              <a
+                href={sandboxSheetUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white border border-zinc-700 font-semibold text-sm transition-colors"
+              >
+                <span>Cek Live Google Sheet</span>
+                <ExternalLink class="w-4 h-4" />
+              </a>
+            </div>
+
+            <button
+              type="button"
+              id="reset-lead-form-btn"
+              class="text-xs text-zinc-400 hover:text-white underline underline-offset-4 cursor-pointer"
+            >
+              Kirim data pendaftaran lainnya
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import {
+    PACKAGE_LABELS,
+    isValidPackageId,
+    validateLeadInput
+  } from '../utils/validation';
+
+  const wrapper = document.getElementById('lead-form-wrapper');
+  const form = document.getElementById('elevate-lead-form') as HTMLFormElement | null;
+  const errorAlert = document.getElementById('form-error-alert');
+  const submitBtn = document.getElementById('submit-lead-btn') as HTMLButtonElement | null;
+  const submitLabel = document.getElementById('submit-btn-label');
+  const successPanel = document.getElementById('form-success-panel');
+  const successSummary = document.getElementById('success-summary-text');
+  const successWaLink = document.getElementById('success-wa-link') as HTMLAnchorElement | null;
+  const pipelineModeBadge = document.getElementById('pipeline-mode-badge');
+  const capturedUtmDisplay = document.getElementById('captured-utm-display');
+  const resetBtn = document.getElementById('reset-lead-form-btn');
+  const packageSelect = document.getElementById('packageId') as HTMLSelectElement | null;
+
+  const utmSourceInput = document.getElementById('utm_source') as HTMLInputElement | null;
+  const utmMediumInput = document.getElementById('utm_medium') as HTMLInputElement | null;
+  const utmCampaignInput = document.getElementById('utm_campaign') as HTMLInputElement | null;
+  const referrerInput = document.getElementById('referrer_url') as HTMLInputElement | null;
+
+  const params = new URLSearchParams(window.location.search);
+  const utmSource = params.get('utm_source') || 'direct';
+  const utmMedium = params.get('utm_medium') || 'none';
+  const utmCampaign = params.get('utm_campaign') || 'organic';
+  const referrer = document.referrer || 'direct';
+
+  if (utmSourceInput) utmSourceInput.value = utmSource;
+  if (utmMediumInput) utmMediumInput.value = utmMedium;
+  if (utmCampaignInput) utmCampaignInput.value = utmCampaign;
+  if (referrerInput) referrerInput.value = referrer;
+
+  window.addEventListener('elevate:select-package', (event) => {
+    const customEvent = event as CustomEvent<{ packageId: string }>;
+    const pkgId = customEvent.detail?.packageId;
+    if (packageSelect && pkgId && isValidPackageId(pkgId)) {
+      packageSelect.value = pkgId;
+      packageSelect.classList.add('ring-2', 'ring-emerald-500');
+      setTimeout(() => {
+        packageSelect.classList.remove('ring-2', 'ring-emerald-500');
+      }, 1400);
+    }
+  });
+
+  function showError(message: string) {
+    if (!errorAlert) return;
+    errorAlert.textContent = message;
+    errorAlert.classList.remove('hidden');
+  }
+
+  function clearError() {
+    if (!errorAlert) return;
+    errorAlert.textContent = '';
+    errorAlert.classList.add('hidden');
+  }
+
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    clearError();
+
+    const formData = new FormData(form);
+    const payload = {
+      fullName: String(formData.get('fullName') || ''),
+      email: String(formData.get('email') || ''),
+      phone: String(formData.get('phone') || ''),
+      packageId: String(formData.get('packageId') || ''),
+      notes: String(formData.get('notes') || ''),
+      companyFax: String(formData.get('company_fax') || ''),
+      utmSource: String(formData.get('utmSource') || 'direct'),
+      utmMedium: String(formData.get('utmMedium') || 'none'),
+      utmCampaign: String(formData.get('utmCampaign') || 'organic'),
+      referrer: String(formData.get('referrer') || 'direct')
+    };
+
+    const check = validateLeadInput(payload);
+    if (!check.valid) {
+      showError(check.error || 'Periksa kembali kelengkapan data Anda.');
+      return;
+    }
+
+    if (submitBtn) submitBtn.disabled = true;
+    if (submitLabel) submitLabel.textContent = 'Memproses Pendaftaran...';
+
+    try {
+      const response = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      const result = (await response.json()) as {
+        ok: boolean;
+        mode?: string;
+        error?: string;
+      };
+
+      if (!response.ok || !result.ok) {
+        showError(result.error || 'Terjadi kendala saat memproses pendaftaran. Silakan coba lagi.');
+        return;
+      }
+
+      const selectedPkgLabel = isValidPackageId(payload.packageId)
+        ? PACKAGE_LABELS[payload.packageId]
+        : payload.packageId;
+
+      if (successSummary) {
+        successSummary.textContent = `Terima kasih, ${payload.fullName.trim()}. Permintaan slot untuk ${selectedPkgLabel} telah kami terima.`;
+      }
+
+      if (pipelineModeBadge) {
+        pipelineModeBadge.textContent =
+          result.mode === 'live' ? 'SYNCED TO GOOGLE SHEETS' : 'VALIDATED (DEMO SANDBOX)';
+      }
+
+      if (capturedUtmDisplay) {
+        capturedUtmDisplay.textContent = `${payload.utmSource} / ${payload.utmCampaign}`;
+      }
+
+      const waNumber = wrapper?.getAttribute('data-whatsapp') || '6281234567890';
+      const waMessage = encodeURIComponent(
+        `Halo tim ElevateGrowth, saya ${payload.fullName.trim()} baru saja mendaftar paket ${selectedPkgLabel}. Mohon informasi langkah selanjutnya.`
+      );
+      if (successWaLink) {
+        successWaLink.href = `https://wa.me/${waNumber}?text=${waMessage}`;
+      }
+
+      form.classList.add('hidden');
+      successPanel?.classList.remove('hidden');
+    } catch {
+      showError('Gagal terhubung ke server. Periksa koneksi internet Anda lalu coba kembali.');
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
+      if (submitLabel) submitLabel.textContent = 'Kirim Pendaftaran & Amankan Slot';
+    }
+  });
+
+  resetBtn?.addEventListener('click', () => {
+    form?.reset();
+    if (utmSourceInput) utmSourceInput.value = utmSource;
+    if (utmMediumInput) utmMediumInput.value = utmMedium;
+    if (utmCampaignInput) utmCampaignInput.value = utmCampaign;
+    if (referrerInput) referrerInput.value = referrer;
+    clearError();
+    successPanel?.classList.add('hidden');
+    form?.classList.remove('hidden');
+  });
+</script>
