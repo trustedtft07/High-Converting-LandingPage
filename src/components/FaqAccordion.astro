@@ -1,0 +1,68 @@
+---
+import { ChevronDown } from 'lucide-astro';
+
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+const faqs: FaqItem[] = [
+  {
+    question: 'Apakah sistem ini membutuhkan biaya sewa server atau langganan database bulanan?',
+    answer: 'Tidak. Halaman di-deploy pada jaringan edge statis dan serverless modern, sedangkan penyimpanan prospek terhubung langsung ke Google Sheets milik bisnis Anda menggunakan Google Apps Script tanpa biaya berlangganan bulanan.'
+  },
+  {
+    question: 'Bagaimana keamanan data pelanggan kami dari serangan bot spam atau peretas?',
+    answer: 'Seluruh pengiriman formulir melewati lapisan Serverless API Proxy terlebih dahulu. URL Google Sheets Anda tidak pernah terekspos ke browser pengunjung, dilengkapi jebakan Honeypot anti-bot, pembatasan kuota kirim berbasis IP (Rate Limiter), serta sanitasi anti-injeksi formula.'
+  },
+  {
+    question: 'Apakah tim penjualan saya yang non-teknis mudah memantau data pendaftar?',
+    answer: 'Sangat mudah. Setiap pendaftar baru otomatis tercatat rapi baris demi baris di aplikasi Google Sheets yang dapat langsung dibuka melalui smartphone Android maupun iPhone, ditambah notifikasi email instan.'
+  },
+  {
+    question: 'Bisakah halaman ini melacak performa iklan dari Instagram, TikTok, atau Google Ads?',
+    answer: 'Ya. Formulir secara otomatis menangkap parameter URL kampanye (utm_source, utm_medium, utm_campaign, serta halaman perujuk) dan menyimpannya bersama data prospek sehingga Anda mengetahui persis iklan mana yang menghasilkan konversi.'
+  },
+  {
+    question: 'Kenapa kecepatan muat halaman (PageSpeed 98+) sangat berpengaruh pada omzet?',
+    answer: 'Mayoritas klik iklan berasal dari pengguna perangkat mobile dengan sinyal seluler yang fluktuatif. Halaman yang terbuka di bawah 1 detik memangkas rasio pengunjung yang menutup halaman sebelum membaca penawaran hingga lebih dari separuh.'
+  },
+  {
+    question: 'Apakah struktur penawaran ini cocok untuk bisnis jasa lokal maupun produk B2B?',
+    answer: 'Sangat cocok. Arsitektur ini dirancang khusus untuk skenario yang membutuhkan kualifikasi prospek bernilai tinggi, seperti pendaftaran workshop/event, klinik spesialis, agensi konsultan, properti, hingga demo perangkat lunak B2B.'
+  }
+];
+---
+
+<section id="faq" class="py-20 border-b border-zinc-800/80 bg-zinc-950">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center space-y-4 mb-14">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-mono text-zinc-300">
+        <span>TECHNICAL &amp; BUSINESS FAQ</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+        Pertanyaan yang Sering Diajukan
+      </h2>
+      <p class="text-zinc-400 text-base sm:text-lg">
+        Jawaban transparan mengenai operasional teknis, efisiensi biaya, dan keamanan data prospek Anda.
+      </p>
+    </div>
+
+    <div class="space-y-3">
+      {faqs.map((faq, index) => (
+        <details
+          class="group rounded-xl bg-zinc-900/40 border border-zinc-800/80 open:bg-zinc-900/80 open:border-zinc-700 transition-colors"
+          open={index === 0}
+        >
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none [&::-webkit-details-marker]:hidden text-left font-semibold text-white text-sm sm:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 rounded-xl">
+            <span>{faq.question}</span>
+            <ChevronDown class="w-5 h-5 text-zinc-400 shrink-0 transition-transform duration-200 group-open:rotate-180 group-open:text-emerald-400" />
+          </summary>
+          <div class="px-6 pb-5 text-sm text-zinc-400 leading-relaxed border-t border-zinc-800/60 pt-4">
+            {faq.answer}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

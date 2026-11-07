@@ -1,0 +1,172 @@
+---
+import { ArrowRight, Check } from 'lucide-astro';
+
+interface PricingTier {
+  id: string;
+  name: string;
+  badge: string;
+  price: string;
+  period: string;
+  slotsLeft: number;
+  featured: boolean;
+  description: string;
+  features: string[];
+  ctaLabel: string;
+}
+
+const tiers: PricingTier[] = [
+  {
+    id: 'workshop-pass',
+    name: 'Executive Workshop Pass',
+    badge: 'SELF-IMPLEMENTER',
+    price: 'Rp 1.490.000',
+    period: 'sekali bayar · akses penuh',
+    slotsLeft: 7,
+    featured: false,
+    description: 'Ideal untuk founder atau tim internal yang ingin membangun dan mengelola mesin akuisisi leads secara mandiri.',
+    features: [
+      'Akses penuh 2 hari Live Executive Workshop',
+      'Framework copywriting B2B & struktur penawaran',
+      'Source code template Astro + Google Sheets Webhook',
+      'Panduan setup pelacakan parameter iklan UTM',
+      'Rekaman sesi HD & modul dokumentasi teknis'
+    ],
+    ctaLabel: 'Pilih Workshop Pass'
+  },
+  {
+    id: 'growth-bundle',
+    name: 'Growth Accelerator Bundle',
+    badge: 'PALING DIREKOMENDASIKAN',
+    price: 'Rp 3.490.000',
+    period: 'sekali bayar · termasuk audit 1-on-1',
+    slotsLeft: 4,
+    featured: true,
+    description: 'Kombinasi pelatihan intensif dan bedah langsung arsitektur konversi bisnis Anda bersama praktisi.',
+    features: [
+      'Seluruh fasilitas Executive Workshop Pass',
+      'Sesi 1-on-1 Offer & Funnel Audit selama 90 menit',
+      'Konfigurasi Serverless API Proxy & proteksi anti-bot',
+      'Optimasi langsung skor Mobile PageSpeed 98+',
+      'Prioritas tanya-jawab teknis selama 14 hari kerja'
+    ],
+    ctaLabel: 'Amankan Growth Bundle'
+  },
+  {
+    id: 'turnkey-implementation',
+    name: 'Full Turnkey Implementation',
+    badge: 'DONE-FOR-YOU SYSTEM',
+    price: 'Rp 8.900.000',
+    period: 'terima beres · siap jalan iklan',
+    slotsLeft: 2,
+    featured: false,
+    description: 'Untuk bisnis mapan yang membutuhkan eksekusi penuh dari riset penawaran hingga sistem siap menerima trafik.',
+    features: [
+      'Riset kompetitor, copywriting, & desain halaman kustom',
+      'Pengembangan penuh Landing Page konversi tinggi',
+      'Integrasi Google Sheets CRM + Auto-Email & WhatsApp',
+      'Pemasangan custom domain, SSL, & analitik konversi',
+      'Pendampingan optimasi performa kampanye 30 hari'
+    ],
+    ctaLabel: 'Konsultasi Paket Turnkey'
+  }
+];
+---
+
+<section id="harga" class="py-20 border-b border-zinc-800/80 bg-zinc-950">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-mono text-emerald-400">
+        <span>INVESTMENT TIERS</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+        Pilih Skema Akselerasi Sesuai Tahap Bisnis Anda
+      </h2>
+      <p class="text-zinc-400 text-base sm:text-lg leading-relaxed">
+        Investasi satu kali tanpa biaya langganan bulanan tersembunyi. Seluruh infrastruktur data menjadi hak milik bisnis Anda sepenuhnya.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+      {tiers.map((tier) => (
+        <div
+          class:list={[
+            'rounded-xl p-6 sm:p-8 flex flex-col justify-between border transition-colors',
+            tier.featured
+              ? 'bg-zinc-900/90 border-emerald-500/60 shadow-xl shadow-emerald-950/20'
+              : 'bg-zinc-900/40 border-zinc-800/80 hover:border-zinc-700/80'
+          ]}
+        >
+          <div class="space-y-6">
+            <div class="flex items-center justify-between gap-2">
+              <span
+                class:list={[
+                  'text-[11px] font-mono font-semibold px-2.5 py-1 rounded-md border',
+                  tier.featured
+                    ? 'bg-emerald-500/15 text-emerald-300 border-emerald-500/40'
+                    : 'bg-zinc-950 text-zinc-300 border-zinc-800'
+                ]}
+              >
+                {tier.badge}
+              </span>
+              <span class="text-xs font-mono text-amber-300 tabular-nums">
+                Sisa {tier.slotsLeft} slot
+              </span>
+            </div>
+
+            <div class="space-y-2">
+              <h3 class="text-xl font-bold text-white">{tier.name}</h3>
+              <p class="text-sm text-zinc-400 leading-relaxed">{tier.description}</p>
+            </div>
+
+            <div class="pt-4 border-t border-zinc-800/80">
+              <div class="text-3xl font-bold font-mono text-white tabular-nums tracking-tight">
+                {tier.price}
+              </div>
+              <div class="text-xs text-zinc-400 mt-1">{tier.period}</div>
+            </div>
+
+            <ul class="space-y-3 pt-2 text-sm text-zinc-300">
+              {tier.features.map((feature) => (
+                <li class="flex items-start gap-3">
+                  <Check class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="pt-8 mt-6 border-t border-zinc-800/60">
+            <a
+              href="#lead-form"
+              data-select-package={tier.id}
+              class:list={[
+                'w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg font-semibold text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400',
+                tier.featured
+                  ? 'bg-emerald-500 hover:bg-emerald-400 text-zinc-950'
+                  : 'bg-zinc-800 hover:bg-zinc-700 text-white border border-zinc-700'
+              ]}
+            >
+              <span>{tier.ctaLabel}</span>
+              <ArrowRight class="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  const packageButtons = document.querySelectorAll<HTMLAnchorElement>('[data-select-package]');
+  packageButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const selectedPackage = button.getAttribute('data-select-package');
+      if (!selectedPackage) return;
+      window.dispatchEvent(
+        new CustomEvent('elevate:select-package', {
+          detail: { packageId: selectedPackage }
+        })
+      );
+    });
+  });
+</script>

@@ -1,0 +1,95 @@
+---
+import { TrendingUp } from 'lucide-astro';
+
+interface TestimonialItem {
+  initials: string;
+  name: string;
+  role: string;
+  company: string;
+  metricValue: string;
+  metricLabel: string;
+  quote: string;
+}
+
+const testimonials: TestimonialItem[] = [
+  {
+    initials: 'HW',
+    name: 'Hendra Wijaya',
+    role: 'Managing Director',
+    company: 'Nusantara Logistik Tech',
+    metricValue: '+184%',
+    metricLabel: 'Qualified B2B Leads',
+    quote: 'Sebelumnya landing page kami berat dan butuh 5 detik untuk dibuka dari iklan LinkedIn. Setelah migrasi ke arsitektur Astro dan webhook Google Sheets ini, biaya per akuisisi turun drastis dan tim sales langsung follow-up dari HP.'
+  },
+  {
+    initials: 'NK',
+    name: 'Nadia Kusuma',
+    role: 'Head of Growth',
+    company: 'DermaEstetika Clinic Group',
+    metricValue: '0.6s',
+    metricLabel: 'Mobile Load Speed',
+    quote: 'Fitur pelacakan UTM otomatis ke Google Sheets sangat membantu kami memilah kampanye Instagram mana yang benar-benar menghasilkan reservasi pasien, tanpa harus membayar langganan aplikasi CRM mahal setiap bulan.'
+  },
+  {
+    initials: 'RP',
+    name: 'Raka Pratama',
+    role: 'Co-Founder',
+    company: 'KawanKasir POS',
+    metricValue: '-62%',
+    metricLabel: 'Cost Per Acquisition',
+    quote: 'Alur dari pengisian form langsung diarahkan ke pesan WhatsApp otomatis benar-benar sesuai dengan kebiasaan pemilik UMKM di Indonesia. Rasio closing demo produk kami naik lebih dari dua kali lipat dalam tiga minggu.'
+  }
+];
+---
+
+<section id="testimoni" class="py-20 border-b border-zinc-800/80 bg-zinc-950">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-mono text-emerald-400">
+        <span>VERIFIED OUTCOMES</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+        Dampak Terukur pada Akuisisi Bisnis Nyata
+      </h2>
+      <p class="text-zinc-400 text-base sm:text-lg leading-relaxed">
+        Hasil implementasi arsitektur halaman berkecepatan tinggi yang dipadukan dengan automasi pencatatan prospek instan.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {testimonials.map((item) => (
+        <article class="p-6 sm:p-8 rounded-xl bg-zinc-900/40 border border-zinc-800/80 flex flex-col justify-between space-y-6">
+          <div class="space-y-5">
+            <div class="flex items-center justify-between pb-4 border-b border-zinc-800/80">
+              <div>
+                <div class="text-2xl font-bold font-mono text-emerald-400 tabular-nums">
+                  {item.metricValue}
+                </div>
+                <div class="text-xs text-zinc-400 font-medium">{item.metricLabel}</div>
+              </div>
+              <div class="w-9 h-9 rounded-lg bg-zinc-950 border border-zinc-800 flex items-center justify-center text-emerald-400">
+                <TrendingUp class="w-4 h-4" />
+              </div>
+            </div>
+
+            <blockquote class="text-sm text-zinc-300 leading-relaxed">
+              "{item.quote}"
+            </blockquote>
+          </div>
+
+          <div class="flex items-center gap-3.5 pt-4 border-t border-zinc-800/60">
+            <div class="w-10 h-10 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center font-mono text-xs font-bold text-white shrink-0">
+              {item.initials}
+            </div>
+            <div>
+              <div class="text-sm font-semibold text-white">{item.name}</div>
+              <div class="text-xs text-zinc-400">
+                {item.role} · {item.company}
+              </div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
