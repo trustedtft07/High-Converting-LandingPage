@@ -1,0 +1,106 @@
+---
+interface PricingTier {
+  id: string;
+  name: string;
+  price: string;
+  description: string;
+  items: string[];
+}
+
+const tiers: PricingTier[] = [
+  {
+    id: 'landing-page-standar',
+    name: 'Paket Standar',
+    price: 'Rp 1.200.000',
+    description: 'Untuk bisnis atau event yang membutuhkan satu halaman penawaran bersih dan cepat aktif.',
+    items: [
+      '1 Halaman penawaran mobile-first',
+      'Integrasi formulir ke Google Sheets',
+      'Tombol direct WhatsApp terformat',
+      'Setup hosting Vercel & custom domain'
+    ]
+  },
+  {
+    id: 'landing-page-bisnis',
+    name: 'Paket Bisnis + UTM',
+    price: 'Rp 2.400.000',
+    description: 'Untuk bisnis yang beriklan di media sosial dan membutuhkan pelacakan sumber iklan yang rapi.',
+    items: [
+      'Seluruh cakupan Paket Standar',
+      'Pelacakan otomatis parameter iklan UTM',
+      'Backend Serverless Proxy perlindungan data',
+      'Filter anti-bot honeypot & pembatas frekuensi IP'
+    ]
+  }
+];
+---
+
+<section id="harga" class="py-16 sm:py-24 border-b border-zinc-200">
+  <div class="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
+    <div class="max-w-3xl space-y-3 mb-16">
+      <h2 class="font-serif text-3xl sm:text-5xl font-normal text-zinc-950 tracking-tight">
+        Biaya investasi transparan.
+      </h2>
+      <p class="text-zinc-600 text-base sm:text-lg leading-relaxed">
+        Pengerjaan satu kali tanpa biaya langganan bulanan. Database Google Sheets dan akun hosting menjadi milik Anda sepenuhnya.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+      {tiers.map((tier) => (
+        <div class="rounded-xl p-8 sm:p-10 lg:p-12 bg-white border border-zinc-200 shadow-sm flex flex-col justify-between space-y-8">
+          <div class="space-y-6">
+            <div>
+              <h3 class="font-serif text-2xl sm:text-3xl font-normal text-zinc-950">{tier.name}</h3>
+              <p class="text-sm text-zinc-500 mt-1.5 leading-relaxed">{tier.description}</p>
+            </div>
+
+            <div class="pt-4 border-t border-zinc-100">
+              <div class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-zinc-950 tracking-tight">
+                {tier.price}
+              </div>
+              <div class="text-xs text-zinc-500 mt-1">Pengerjaan satu kali</div>
+            </div>
+
+            <ul class="space-y-3 pt-4 border-t border-zinc-100 text-sm sm:text-base text-zinc-700">
+              {tier.items.map((item) => (
+                <li class="flex items-start gap-3">
+                  <span class="text-zinc-950 font-bold shrink-0">&bull;</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="pt-6 border-t border-zinc-100">
+            <a
+              href="#lead-form"
+              data-select-package={tier.id}
+              class="group w-full relative inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm sm:text-base font-medium text-white transition-all duration-150 bg-[#173e2d] hover:bg-[#112e22] rounded-md border border-[#112e22] shadow-sm active:translate-y-0.5"
+            >
+              <span>Pilih {tier.name}</span>
+              <svg class="w-4 h-4 text-emerald-200/80 group-hover:text-white transition-all duration-150 group-hover:translate-x-0.5" viewBox="0 0 16 16" fill="none">
+                <path d="M6 3.5L10.5 8L6 12.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLAnchorElement>('[data-select-package]');
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const selectedId = btn.getAttribute('data-select-package');
+      if (!selectedId) return;
+      window.dispatchEvent(
+        new CustomEvent('elevate:select-package', {
+          detail: { packageId: selectedId }
+        })
+      );
+    });
+  });
+</script>
