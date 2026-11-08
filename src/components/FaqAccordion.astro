@@ -1,0 +1,54 @@
+---
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+const faqs: FaqItem[] = [
+  {
+    question: 'Apakah ada biaya langganan bulanan untuk database formulir?',
+    answer: 'Tidak ada. Penyimpanan data prospek menggunakan Google Sheets resmi dari akun Google milik Anda. Selama akun Google Anda aktif, data tersimpan secara gratis tanpa batas kuota bulanan.'
+  },
+  {
+    question: 'Apakah tim kami harus mengerti pemrograman untuk melihat data yang masuk?',
+    answer: 'Sama sekali tidak. Anda dan tim penjualan cukup membuka aplikasi Google Sheets di smartphone atau laptop. Data pendaftar baru akan langsung muncul rapi baris demi baris secara otomatis.'
+  },
+  {
+    question: 'Berapa lama estimasi pengerjaan hingga halaman siap digunakan?',
+    answer: 'Rata-rata pengerjaan membutuhkan waktu 2 hingga 4 hari kerja setelah materi konten (teks, foto, dan nomor kontak) disepakati.'
+  },
+  {
+    question: 'Apakah bisa menggunakan nama domain yang sudah saya miliki sebelumnya?',
+    answer: 'Bisa. Kami akan membantu menghubungkan subdomain atau domain utama Anda ke hosting halaman tanpa biaya tambahan.'
+  }
+];
+---
+
+<section id="faq" class="py-16 sm:py-24 border-b border-zinc-200">
+  <div class="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <div class="lg:col-span-5 space-y-4">
+        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-zinc-950 tracking-tight leading-[1.12]">
+          Pertanyaan yang sering diajukan.
+        </h2>
+        <p class="text-zinc-600 text-sm sm:text-base leading-relaxed">
+          Jawaban praktis seputar kepemilikan data, cara kerja spreadsheet, dan proses pengerjaan.
+        </p>
+      </div>
+
+      <div class="lg:col-span-7 divide-y divide-zinc-200">
+        {faqs.map((faq, index) => (
+          <details class="py-5 group" open={index === 0}>
+            <summary class="cursor-pointer list-none [&::-webkit-details-marker]:hidden font-semibold text-zinc-900 text-sm sm:text-base flex items-center justify-between gap-4">
+              <span>{faq.question}</span>
+              <span class="text-zinc-400 group-open:rotate-45 transition-transform text-xl shrink-0">+</span>
+            </summary>
+            <p class="text-zinc-600 text-sm leading-relaxed pt-3">
+              {faq.answer}
+            </p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

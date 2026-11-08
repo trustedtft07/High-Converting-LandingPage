@@ -1,0 +1,29 @@
+---
+import { siteConfig } from '../config/site';
+
+const whatsappNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER || siteConfig.whatsappNumber;
+const whatsappText = encodeURIComponent('Halo SheetFlow, saya ingin konsultasi mengenai pembuatan landing page terintegrasi Google Sheets.');
+const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappText}`;
+---
+
+<div class="md:hidden fixed bottom-0 inset-x-0 z-40 border-t border-zinc-200 bg-[#faf9f6]/95 backdrop-blur-sm px-4 py-3">
+  <div class="grid grid-cols-2 gap-3">
+    <a
+      href={whatsappUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-md bg-white border border-zinc-300 text-zinc-900 font-medium text-xs shadow-sm active:translate-y-0.5"
+    >
+      <span>Chat WhatsApp</span>
+    </a>
+    <a
+      href="#lead-form"
+      class="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-md bg-[#173e2d] border border-[#112e22] text-white font-medium text-xs shadow-sm active:translate-y-0.5"
+    >
+      <span>Konsultasi Form</span>
+      <svg class="w-3.5 h-3.5 text-emerald-200/80" viewBox="0 0 16 16" fill="none">
+        <path d="M6 3.5L10.5 8L6 12.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+</div>

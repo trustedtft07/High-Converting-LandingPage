@@ -1,0 +1,20 @@
+---
+import { siteConfig } from '../config/site';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="py-12 pb-24 md:pb-12 text-zinc-500 text-xs">
+  <div class="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div>
+      &copy; {currentYear} {siteConfig.name}. Solusi landing page cepat &amp; integrasi Google Sheets.
+    </div>
+
+    <div class="flex items-center gap-6 text-zinc-600">
+      <a href="#fitur" class="hover:text-zinc-950 transition-colors">Fitur</a>
+      <a href="#harga" class="hover:text-zinc-950 transition-colors">Biaya</a>
+      <a href="#faq" class="hover:text-zinc-950 transition-colors">FAQ</a>
+      <a href="#lead-form" class="hover:text-zinc-950 transition-colors">Konsultasi</a>
+    </div>
+  </div>
+</footer>

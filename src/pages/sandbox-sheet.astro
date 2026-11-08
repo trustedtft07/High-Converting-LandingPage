@@ -1,0 +1,302 @@
+---
+import { siteConfig } from '../config/site';
+
+interface LeadRow {
+  row: number;
+  timestamp: string;
+  fullName: string;
+  email: string;
+  phone: string;
+  package: string;
+  notes: string;
+  utmSource: string;
+  utmMedium: string;
+  utmCampaign: string;
+  referrer: string;
+}
+
+const sampleLeads: LeadRow[] = [
+  {
+    row: 1,
+    timestamp: '2026-11-08 12:44:10',
+    fullName: 'Budi Santoso',
+    email: 'budi***@gmail.com',
+    phone: '0812****7890',
+    package: 'Paket Bisnis + UTM',
+    notes: 'Promo produk akhir tahun',
+    utmSource: 'instagram',
+    utmMedium: 'cpc',
+    utmCampaign: 'promo2026',
+    referrer: 'https://instagram.com'
+  },
+  {
+    row: 2,
+    timestamp: '2026-11-08 11:20:05',
+    fullName: 'Siti Rahmadani',
+    email: 'siti***@yahoo.com',
+    phone: '0857****1123',
+    package: 'Paket Standar',
+    notes: 'Event webinar UMKM nasional',
+    utmSource: 'direct',
+    utmMedium: 'none',
+    utmCampaign: 'organic',
+    referrer: 'direct'
+  },
+  {
+    row: 3,
+    timestamp: '2026-11-08 09:15:42',
+    fullName: 'Hendro Wijaya',
+    email: 'hend***@outlook.com',
+    phone: '0813****7741',
+    package: 'Paket Bisnis + UTM',
+    notes: 'Katalog servis bengkel mobil',
+    utmSource: 'tiktok',
+    utmMedium: 'video_ad',
+    utmCampaign: 'lebaran_sale',
+    referrer: 'https://tiktok.com'
+  },
+  {
+    row: 4,
+    timestamp: '2026-11-08 08:30:18',
+    fullName: 'Aris Munandar',
+    email: 'aris***@gmail.com',
+    phone: '0819****3320',
+    package: 'Paket Bisnis + UTM',
+    notes: 'Jasa konsultasi arsitektur',
+    utmSource: 'google',
+    utmMedium: 'cpc',
+    utmCampaign: 'search_lead',
+    referrer: 'https://google.com'
+  },
+  {
+    row: 5,
+    timestamp: '2026-11-07 19:40:22',
+    fullName: 'Rina Marlina',
+    email: 'rina***@gmail.com',
+    phone: '0811****5542',
+    package: 'Paket Standar',
+    notes: 'Portofolio fotografer wedding',
+    utmSource: 'facebook',
+    utmMedium: 'feed',
+    utmCampaign: 'wedding_q4',
+    referrer: 'https://facebook.com'
+  },
+  {
+    row: 6,
+    timestamp: '2026-11-07 16:15:50',
+    fullName: 'Dimas Pratama',
+    email: 'dima***@company.id',
+    phone: '0817****9910',
+    package: 'Paket Bisnis + UTM',
+    notes: 'Landing page launching SaaS',
+    utmSource: 'linkedin',
+    utmMedium: 'post',
+    utmCampaign: 'founder_network',
+    referrer: 'https://linkedin.com'
+  },
+  {
+    row: 7,
+    timestamp: '2026-11-07 14:02:11',
+    fullName: 'Aulia Zahra',
+    email: 'auli***@gmail.com',
+    phone: '0856****2301',
+    package: 'Paket Bisnis + UTM',
+    notes: 'Pendaftaran kursus bahasa inggris',
+    utmSource: 'instagram',
+    utmMedium: 'reels',
+    utmCampaign: 'fluent2026',
+    referrer: 'https://instagram.com'
+  },
+  {
+    row: 8,
+    timestamp: '2026-11-07 10:48:33',
+    fullName: 'Eko Susanto',
+    email: 'ekos***@yahoo.co.id',
+    phone: '0812****4488',
+    package: 'Paket Standar',
+    notes: 'Penawaran catering kantor harian',
+    utmSource: 'direct',
+    utmMedium: 'none',
+    utmCampaign: 'organic',
+    referrer: 'direct'
+  },
+  {
+    row: 9,
+    timestamp: '2026-11-06 21:12:04',
+    fullName: 'Nadia Safitri',
+    email: 'nadi***@gmail.com',
+    phone: '0878****6720',
+    package: 'Paket Bisnis + UTM',
+    notes: 'Pemesanan hampers lebaran',
+    utmSource: 'tiktok',
+    utmMedium: 'live',
+    utmCampaign: 'flash_sale',
+    referrer: 'https://tiktok.com'
+  },
+  {
+    row: 10,
+    timestamp: '2026-11-06 15:30:19',
+    fullName: 'Reza Aditya',
+    email: 'reza***@startup.co',
+    phone: '0822****8831',
+    package: 'Paket Bisnis + UTM',
+    notes: 'Early access aplikasi mobile',
+    utmSource: 'twitter',
+    utmMedium: 'thread',
+    utmCampaign: 'beta_launch',
+    referrer: 'https://x.com'
+  }
+];
+
+const emptyRowIndices = Array.from({ length: 15 }, (_, i) => i + 11);
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Database Leads Sandbox (Demo) | {siteConfig.name}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="bg-[#f8f9fa] text-zinc-900 font-sans min-h-screen flex flex-col antialiased">
+    <header class="bg-white border-b border-zinc-300 px-4 py-2.5 flex items-center justify-between gap-4 sticky top-0 z-30 shadow-xs">
+      <div class="flex items-center gap-3 min-w-0">
+        <svg class="w-8 h-8 shrink-0 text-[#0f9d58]" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H7v-2h5v2zm5-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+        </svg>
+
+        <div class="min-w-0">
+          <div class="flex items-center gap-2">
+            <h1 class="text-sm font-semibold text-zinc-900 truncate">Database-Leads-SheetFlow</h1>
+            <span class="text-[11px] px-2 py-0.5 rounded bg-zinc-100 text-zinc-600 border border-zinc-200">
+              Demo Sandbox
+            </span>
+          </div>
+          <div class="flex items-center gap-3 text-xs text-zinc-500 pt-0.5">
+            <span>File</span>
+            <span>Edit</span>
+            <span>Tampilan</span>
+            <span>Sisipkan</span>
+            <span>Format</span>
+            <span>Data</span>
+            <span>Alat</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 shrink-0">
+        <div class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs bg-emerald-50 text-emerald-800 border border-emerald-200">
+          <span>Tersimpan di Google Drive</span>
+        </div>
+        <a
+          href="/"
+          class="inline-flex items-center justify-center px-3.5 py-1.5 text-xs font-medium text-zinc-700 bg-white border border-zinc-300 rounded hover:bg-zinc-50 transition-colors"
+        >
+          &larr; Kembali ke Landing Page
+        </a>
+      </div>
+    </header>
+
+    <div class="bg-white border-b border-zinc-300 px-4 py-1.5 flex items-center gap-3 text-xs">
+      <div class="font-medium text-zinc-700 px-2 py-0.5 border border-zinc-300 rounded bg-[#f8f9fa] w-12 text-center">
+        A1
+      </div>
+      <span class="text-zinc-400 font-serif italic text-sm">fx</span>
+      <div class="w-full text-zinc-700 font-mono text-[11px] truncate">
+        =ARRAYFORMULA(FILTER(A2:J, A2:A&lt;&gt;&quot;&quot;))
+      </div>
+    </div>
+
+    <main class="flex-1 overflow-auto bg-white">
+      <table class="w-full border-collapse text-left text-xs">
+        <thead class="sticky top-0 z-20 bg-[#f8f9fa]">
+          <tr class="border-b border-zinc-300 text-zinc-600 text-[11px]">
+            <th class="w-10 px-2 py-2 text-center font-normal border-r border-zinc-300 bg-[#f1f3f4]">#</th>
+            <th class="px-3 py-2 font-medium border-r border-zinc-300 min-w-[140px]">A &bull; Timestamp</th>
+            <th class="px-3 py-2 font-medium border-r border-zinc-300 min-w-[130px]">B &bull; Full Name</th>
+            <th class="px-3 py-2 font-medium border-r border-zinc-300 min-w-[150px]">C &bull; Email</th>
+            <th class="px-3 py-2 font-medium border-r border-zinc-300 min-w-[120px]">D &bull; Phone</th>
+            <th class="px-3 py-2 font-medium border-r border-zinc-300 min-w-[150px]">E &bull; Package</th>
+            <th class="px-3 py-2 font-medium border-r border-zinc-300 min-w-[200px]">F &bull; Notes</th>
+            <th class="px-3 py-2 font-medium border-r border-zinc-300 min-w-[100px]">G &bull; UTM Source</th>
+            <th class="px-3 py-2 font-medium border-r border-zinc-300 min-w-[100px]">H &bull; UTM Medium</th>
+            <th class="px-3 py-2 font-medium border-r border-zinc-300 min-w-[110px]">I &bull; UTM Campaign</th>
+            <th class="px-3 py-2 font-medium min-w-[150px]">J &bull; Referrer</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-zinc-200 text-zinc-800">
+          {sampleLeads.map((item) => (
+            <tr class="hover:bg-blue-50/20">
+              <td class="px-2 py-2 text-center text-zinc-500 bg-[#f1f3f4] border-r border-zinc-300 text-[11px]">
+                {item.row}
+              </td>
+              <td class="px-3 py-2 border-r border-zinc-200 text-zinc-600 font-sans">
+                {item.timestamp}
+              </td>
+              <td class="px-3 py-2 border-r border-zinc-200 font-medium text-zinc-950 font-sans">
+                {item.fullName}
+              </td>
+              <td class="px-3 py-2 border-r border-zinc-200 text-zinc-600 font-sans">
+                {item.email}
+              </td>
+              <td class="px-3 py-2 border-r border-zinc-200 text-zinc-600 font-sans">
+                {item.phone}
+              </td>
+              <td class="px-3 py-2 border-r border-zinc-200 font-sans">
+                <span class="inline-flex px-2 py-0.5 rounded text-[11px] bg-zinc-100 text-zinc-800 border border-zinc-200">
+                  {item.package}
+                </span>
+              </td>
+              <td class="px-3 py-2 border-r border-zinc-200 text-zinc-700 font-sans">
+                {item.notes}
+              </td>
+              <td class="px-3 py-2 border-r border-zinc-200 text-zinc-600 font-sans">
+                {item.utmSource}
+              </td>
+              <td class="px-3 py-2 border-r border-zinc-200 text-zinc-600 font-sans">
+                {item.utmMedium}
+              </td>
+              <td class="px-3 py-2 border-r border-zinc-200 text-zinc-600 font-sans">
+                {item.utmCampaign}
+              </td>
+              <td class="px-3 py-2 text-zinc-600 font-sans">
+                {item.referrer}
+              </td>
+            </tr>
+          ))}
+
+          {emptyRowIndices.map((rowIndex) => (
+            <tr>
+              <td class="px-2 py-2 text-center text-zinc-400 bg-[#f1f3f4] border-r border-zinc-300 text-[11px]">
+                {rowIndex}
+              </td>
+              <td class="px-3 py-2 border-r border-zinc-200">&nbsp;</td>
+              <td class="px-3 py-2 border-r border-zinc-200">&nbsp;</td>
+              <td class="px-3 py-2 border-r border-zinc-200">&nbsp;</td>
+              <td class="px-3 py-2 border-r border-zinc-200">&nbsp;</td>
+              <td class="px-3 py-2 border-r border-zinc-200">&nbsp;</td>
+              <td class="px-3 py-2 border-r border-zinc-200">&nbsp;</td>
+              <td class="px-3 py-2 border-r border-zinc-200">&nbsp;</td>
+              <td class="px-3 py-2 border-r border-zinc-200">&nbsp;</td>
+              <td class="px-3 py-2 border-r border-zinc-200">&nbsp;</td>
+              <td class="px-3 py-2">&nbsp;</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </main>
+
+    <footer class="bg-[#f8f9fa] border-t border-zinc-300 px-4 py-2 flex items-center justify-between text-xs text-zinc-600 sticky bottom-0 z-30">
+      <div class="flex items-center gap-2">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-white border border-zinc-300 border-b-2 border-b-[#0f9d58] rounded-t font-medium text-zinc-900">
+          <span>Sheet1</span>
+        </div>
+        <span class="text-zinc-400 text-sm font-bold">+</span>
+      </div>
+      <div>
+        10 pendaftar tercatat otomatis &bull; Data disensor otomatis demi keamanan privasi
+      </div>
+    </footer>
+  </body>
+</html>
